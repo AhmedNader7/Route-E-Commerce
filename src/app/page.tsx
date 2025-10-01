@@ -41,7 +41,7 @@ export default async function Home() {
   });
   const { data: brands }: { data: CategoryI[] } = await brandsResponse.json();
 
-  const productsResponse = await fetch(`${process.env.URL_API}/products`, {
+  const productsResponse = await fetch(`${process.env.URL_API || 'https://ecommerce.routemisr.com/api/v1'}/products`, {
     next: { revalidate: 10 * 60 }
   });
   const { data: products }: { data: ProductI[] } = await productsResponse.json();
