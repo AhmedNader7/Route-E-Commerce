@@ -1,8 +1,9 @@
 'use client'
 
 import React, { ReactNode } from 'react'
+import dynamic from 'next/dynamic'
 
-import CartContextProvider from "@/components/Context/CartContext";
+const CartContextProvider = dynamic(() => import("@/components/Context/CartContext"), { ssr: false });
 import { Toaster } from "react-hot-toast";
 import { SessionProvider } from "next-auth/react";
 import Navbar from '../Navbar/Navbar';

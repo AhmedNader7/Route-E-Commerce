@@ -36,7 +36,9 @@ export default function CartContextProvider({children} : {children: React.ReactN
     }
 
     useEffect(() => {
-        getCart();
+        if (typeof window !== 'undefined') {
+            getCart();
+        }
     }, [])
 
   return (
