@@ -9,7 +9,7 @@ export async function addToCartAction(productId: string) {
         throw new Error('Unauthorized')
     }
 
-    const response = await fetch(`${process.env.URL_API}/cart`, {
+    const response = await fetch(`${process.env.URL_API || 'https://ecommerce.routemisr.com/api/v1'}/cart`, {
             method: 'POST',
             body : JSON.stringify({productId}),
             headers: {

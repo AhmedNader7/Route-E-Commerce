@@ -19,7 +19,7 @@ export default async function ProductDetails({params} : {params: Params}   ) {
 
     const { productId } = await params;
 
-    const response = await fetch(`${process.env.URL_API}/products/${productId}`);
+    const response = await fetch(`${process.env.URL_API || 'https://ecommerce.routemisr.com/api/v1'}/products/${productId}`);
     const { data : product } : { data: ProductI } = await response.json();
 
     const fullStars = Math.floor(product.ratingsAverage);

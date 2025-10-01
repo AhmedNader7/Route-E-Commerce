@@ -10,7 +10,7 @@ export async function GET(_request: NextRequest) {
   }
 
   try {
-    const response = await fetch(`${process.env.URL_API}/wishlist`, {
+    const response = await fetch(`${process.env.URL_API || 'https://ecommerce.routemisr.com/api/v1'}/wishlist`, {
       method: 'GET',
       headers: {
         'token': session.token as string

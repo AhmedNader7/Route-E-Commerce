@@ -26,7 +26,7 @@ interface PageProps {
 export default async function CategoryProducts({ params }: PageProps) {
   const { id } = await params;
 
-  const response = await fetch(`${process.env.URL_API}/products?category=${id}`, {
+  const response = await fetch(`${process.env.URL_API || 'https://ecommerce.routemisr.com/api/v1'}/products?category=${id}`, {
     next: { revalidate: 10*60 }
   });
   const { data : products } : { data: ProductI[] } = await response.json();

@@ -20,7 +20,7 @@ export default async function Products({ searchParams }: { searchParams: Promise
 
   const params = await searchParams;
 
-  const response = await fetch(`${process.env.URL_API}/products`, {
+  const response = await fetch(`${process.env.URL_API || 'https://ecommerce.routemisr.com/api/v1'}/products`, {
     next: { revalidate: 10*60 }
   });
   const { data : products } : { data: ProductI[] } = await response.json();

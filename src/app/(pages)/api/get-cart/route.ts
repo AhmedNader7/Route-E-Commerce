@@ -9,7 +9,7 @@ export async function GET() {
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-     const response = await fetch(`${process.env.URL_API}/cart`, {
+     const response = await fetch(`${process.env.URL_API || 'https://ecommerce.routemisr.com/api/v1'}/cart`, {
                 method: 'GET',
                 headers: {
                     token: session.token
