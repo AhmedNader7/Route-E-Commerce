@@ -56,7 +56,7 @@ export default function AllOrders() {
     return null // Redirect handled in useEffect
   }
 
-  const orders = ordersData || []
+  const orders = ordersData?.data || []
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">

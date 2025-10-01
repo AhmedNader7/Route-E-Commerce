@@ -36,7 +36,7 @@ export default function Checkout({cartId} : { cartId: string}) {
               console.log(shippingAddress);
 
 
-        const successUrl = '';
+        const successUrl = `${window.location.origin}/allorders`;
         const response = await fetch(`${process.env.URL_API || 'https://ecommerce.routemisr.com/api/v1'}/orders/checkout-session/${cartId}?url=${encodeURIComponent(successUrl)}`, {
             method: 'POST',
             body : JSON.stringify({shippingAddress}),
