@@ -36,7 +36,7 @@ export default function Checkout({cartId} : { cartId: string}) {
               console.log(shippingAddress);
 
 
-        const successUrl = `${window.location.origin}/allorders`;
+        const successUrl = '';
         const response = await fetch(`${process.env.URL_API || 'https://ecommerce.routemisr.com/api/v1'}/orders/checkout-session/${cartId}?url=${encodeURIComponent(successUrl)}`, {
             method: 'POST',
             body : JSON.stringify({shippingAddress}),
@@ -49,7 +49,8 @@ export default function Checkout({cartId} : { cartId: string}) {
 
 
               if (data.status == 'success') {
-                location.href = data.session.url
+                // Ensure absolute URL for redirect to avoid path duplication
+                location.href = new URL(data.session.url, window.location.origin).toString();
 
             }
         }

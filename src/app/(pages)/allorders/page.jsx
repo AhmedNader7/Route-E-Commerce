@@ -21,6 +21,7 @@ export default function AllOrders() {
   const router = useRouter()
   const [ordersData, setOrdersData] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     if (status === 'loading') return
@@ -33,6 +34,7 @@ export default function AllOrders() {
 
   async function fetchOrders() {
     setIsLoading(true)
+    setError(null)
     try {
       const response = await fetch('/api/get-all-orders')
       if (!response.ok) {
@@ -42,6 +44,7 @@ export default function AllOrders() {
       setOrdersData(data)
     } catch (error) {
       console.error('Orders fetch error:', error)
+      setError(error.message)
       toast.error('Failed to load orders')
     } finally {
       setIsLoading(false)
@@ -54,6 +57,10 @@ export default function AllOrders() {
 
   if (!session) {
     return null // Redirect handled in useEffect
+  }
+
+  if (error) {
+    return <div className="text-red-500 text-center mt-10">Error loading orders: {error}</div>
   }
 
   const orders = ordersData?.data || []
@@ -100,7 +107,7 @@ export default function AllOrders() {
                     <div className="lg:col-span-2">
                       <h3 className="font-semibold mb-4">Items</h3>
                       <div className="space-y-4">
-                        {order.cartItems.map((item, index) => (
+                        {order.items.map((item, index) => (
                           <div key={index} className="flex items-center space-x-4 border-b pb-4">
                             <Image
                               src={item.product.imageCover}
