@@ -23,6 +23,7 @@ export async function GET() {
                     }
                 });
                 const data = await response.json();
+                console.log('Orders data from backend:', data);
 
                 return NextResponse.json(data);
     } catch (error) {

@@ -63,7 +63,7 @@ export default function AllOrders() {
     return <div className="text-red-500 text-center mt-10">Error loading orders: {error}</div>
   }
 
-  const orders = ordersData?.data || []
+  const orders = ordersData || []
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -107,7 +107,7 @@ export default function AllOrders() {
                     <div className="lg:col-span-2">
                       <h3 className="font-semibold mb-4">Items</h3>
                       <div className="space-y-4">
-                        {order.items.map((item, index) => (
+                        {order.cartItems.map((item, index) => (
                           <div key={index} className="flex items-center space-x-4 border-b pb-4">
                             <Image
                               src={item.product.imageCover}
