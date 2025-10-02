@@ -75,6 +75,14 @@ export default function Profile() {
     setSuccess('')
     setLoading(true)
 
+    console.log('Adding address with data:', {
+      name: addressName,
+      details: addressDetails,
+      phone: addressPhone,
+      city: addressCity
+    })
+    console.log('Token:', session?.token)
+
     try {
       const response = await fetch('/api/add-address', {
         method: 'POST',
@@ -90,7 +98,9 @@ export default function Profile() {
         })
       })
 
+      console.log('Response status:', response.status)
       const data = await response.json()
+      console.log('Response data:', data)
 
       if (response.ok) {
         setSuccess('Address added successfully!')
@@ -103,6 +113,7 @@ export default function Profile() {
         setError(data.message || 'Failed to add address')
       }
     } catch (err) {
+      console.error('Error adding address:', err)
       setError('An error occurred. Please try again.')
     }
 
