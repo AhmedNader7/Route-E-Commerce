@@ -30,7 +30,6 @@ It demonstrates how to build scalable and optimized web applications using moder
 
 - **Next.js**
 - **React.js**
-- **JavaScript (ES6+)**
+- **TypeScript**
 - **HTML5**
-- **CSS3**
-- *(Optional: Tailwind / CSS Modules if used)*
+- **Tailwind CSS**
